@@ -1,0 +1,28 @@
+td {
+  border: 1px solid gray;
+  padding: 8px;
+  text-align: right;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+td.player1 {
+  border-top: 12px solid blue;
+  border-bottom: 12px solid blue;
+  height: 4px;
+}
+td.player2 {
+  border-left: 12px solid red;
+  border-right: 12px solid red;
+  width: 4px;
+}
+td.player1score, td.player2score {
+  width: 18px;
+  height: 18px;
+}
+td.player1score {
+  border: 8px solid blue;
+}
+td.player2score {
+  border: 8px solid red;
+}
