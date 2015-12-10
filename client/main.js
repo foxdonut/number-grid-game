@@ -1,4 +1,4 @@
-import React from "react";
+import {createElement as ce} from "react";
 import {render} from "react-dom";
 import {createStore} from "redux";
 import {connect, Provider} from "react-redux";
@@ -14,5 +14,4 @@ store.subscribe(computer(store));
 const App = connect(state => state.toJS())(View);
 
 const element = document.getElementById("app");
-const ce = React.createElement;
 render(ce(Provider, {store: store}, ce(App)), element);
