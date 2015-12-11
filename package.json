@@ -4,8 +4,8 @@
   "description": "Simple number grid game.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --watch --config webpack.client.js --progress --colors && (cd public ; python -m SimpleHTTPServer 3000)",
-    "watch": "watchify -v -o public/bundle.js client/main.js"
+    "start": "webpack --config webpack.client.js --progress --colors && (cd public ; python -m SimpleHTTPServer 3000)",
+    "watch": "webpack --watch --config webpack.client.js --progress --colors"
   },
   "browserify": {
     "transform": [

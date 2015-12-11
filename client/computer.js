@@ -3,14 +3,14 @@ import {map, max, prop, reduce} from "ramda";
 var computer = function(store) {
   return function() {
     const state = store.getState();
-    const token = state.get("token");
+    const token = state.token;
 
     if (token.player !== 2) {
       // not computer's turn
       return;
     }
 
-    const rows = state.get("rows");
+    const rows = state.rows;
 
     const col = token.col;
     let move = null;

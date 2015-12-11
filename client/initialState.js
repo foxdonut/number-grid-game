@@ -1,4 +1,3 @@
-import Immutable from "immutable";
 import shuffle from "./shuffle";
 
 let numbers = shuffle([
@@ -29,11 +28,11 @@ for (var row = 0; row < 8; row++) {
   rows.push({cols: cols});
 }
 
-const initialState = Immutable.Map({
+const initialState = {
   rows: rows,
   token: {player: 1, row: 7, col: 7},
   points: [0, 0],
   status: "Player 1's turn."
-});
+};
 
 export default initialState;
