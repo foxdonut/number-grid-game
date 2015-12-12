@@ -19,18 +19,18 @@ const reducer = function(state, action) {
     addedPoints[token.player - 1] = move.number;
 
     const nextPlayer = 2 - ((token.player + 1) % 2);
-    const rows = state.rows;
 
-    const rowLens = compose(lensIndex(move.col),  lensProp("cols"), lensIndex(move.row));
-    const colLens = compose(lensIndex(token.col), lensProp("cols"), lensIndex(token.row));
-    const nextRows = compose(set(colLens, {}), set(rowLens, {player: nextPlayer}))(rows);
+    const moveLens  = compose(lensIndex(move.row),  lensProp("cols"), lensIndex(move.col));
+    const tokenLens = compose(lensIndex(token.row), lensProp("cols"), lensIndex(token.col));
+    const rows      = compose(set(tokenLens, {}), set(moveLens, {player: nextPlayer}))(state.rows);
+
     const status = "Player " + token.player + " scored " + move.number + ". Player " + nextPlayer + "'s turn.";
 
     return compose(
       set(lensProp("token"), {player: nextPlayer, row: move.row, col: move.col}),
       set(lensProp("status"), status),
       set(lensProp("points"), [state.points[0] + addedPoints[0], state.points[1] + addedPoints[1]]),
-      set(lensProp("rows"), nextRows)
+      set(lensProp("rows"), rows)
     )(state);
   }
   else {
