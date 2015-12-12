@@ -20,6 +20,7 @@ const reducer = function(state, action) {
 
     const nextPlayer = 2 - ((token.player + 1) % 2);
 
+    // gotcha: lens compose left to right!
     const moveLens  = compose(lensIndex(move.row),  lensProp("cols"), lensIndex(move.col));
     const tokenLens = compose(lensIndex(token.row), lensProp("cols"), lensIndex(token.col));
     const rows      = compose(set(tokenLens, {}), set(moveLens, {player: nextPlayer}))(state.rows);
