@@ -12,6 +12,14 @@ const View = function(props) {
       props.dispatch({type: "MOVE", payload: col});
     };
   };
+
+  const newGame = function(evt) {
+    evt.preventDefault();
+    if (confirm("Abandon this game and start a new one?")) {
+      props.dispatch({type: "NEW_GAME"});
+    }
+  };
+
   const renderColumn = function(rowIdx) {
     return function(col, idx) {
       const moveClass = (player === 1 && rowIdx === currentRow) ? "player1moves" :
@@ -22,15 +30,23 @@ const View = function(props) {
       return <td key={"col_" + idx} className={cls} onClick={move(col)}>{col.number}</td>;
     };
   };
+
   const renderRow = function(row, idx) {
     return <tr key={"row_" + idx}>
       {row.cols.map(renderColumn(idx))}
     </tr>;
   };
+
   return <table><tbody>
     {props.rows.map(renderRow)}
-    <tr><td colSpan={8}>{props.status}</td></tr>
-    <tr><td className="player1score">{props.points[0]}</td><td className="player2score">{props.points[1]}</td></tr>
+    <tr>
+      <td colSpan={8}>{props.status}</td>
+    </tr>
+    <tr>
+      <td className="player1score">{props.points[0]}</td>
+      <td className="player2score">{props.points[1]}</td>
+      <td colSpan={6}><button onClick={newGame}>New Game</button></td>
+    </tr>
   </tbody></table>;
 };
 

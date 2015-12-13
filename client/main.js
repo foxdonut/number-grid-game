@@ -15,7 +15,7 @@ import {DevTools, DebugPanel, LogMonitor} from "redux-devtools/lib/react";
 const store = compose(
   devTools(),
   persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
-)(createStore)(reducer, initialState);
+)(createStore)(reducer, initialState());
 
 store.subscribe(computer(store));
 

@@ -1,8 +1,12 @@
 import {compose, lensIndex, lensProp, set} from "ramda";
+import initialState from "./initialState";
 
 const reducer = function(state, action) {
   if (action.type === "PAUSE") {
     return set(lensProp("pausing"), true, state);
+  }
+  else if (action.type === "NEW_GAME") {
+    return initialState();
   }
 
   const move = action.payload;
