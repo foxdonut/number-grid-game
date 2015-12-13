@@ -1,4 +1,4 @@
-import {map, max, prop, reduce} from "ramda";
+import {map, max, prop, reduce, remove} from "ramda";
 
 var computer = function(store) {
   return function() {
@@ -20,9 +20,10 @@ var computer = function(store) {
       const candidate = rows[row].cols[col];
 
       if (parseInt(candidate.number, 10) >= -10) {
-        const otherRows = rows[row].cols;
+        const otherRows = remove(col, 1, rows[row].cols);
         const maxLoss = reduce(max, -100, map(prop("number"), otherRows));
         const nextNet = candidate.number - maxLoss;
+
         if (nextNet > lastNet) {
           move = candidate;
           lastNet = nextNet;
