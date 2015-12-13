@@ -7,14 +7,10 @@ td {
   height: 30px;
 }
 td.player1 {
-  border-top: 12px solid blue;
-  border-bottom: 12px solid blue;
-  height: 4px;
+  background-color: blue;
 }
 td.player2 {
-  border-left: 12px solid red;
-  border-right: 12px solid red;
-  width: 4px;
+  background-color: red;
 }
 td.player1score, td.player2score {
   width: 18px;
@@ -25,4 +21,10 @@ td.player1score {
 }
 td.player2score {
   border: 8px solid red;
+}
+td.player1moves {
+  background-color: #CCEEFF;
+}
+td.player2moves {
+  background-color: #FFDDDD;
 }

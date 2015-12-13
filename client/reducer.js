@@ -1,6 +1,10 @@
 import {compose, lensIndex, lensProp, set} from "ramda";
 
 const reducer = function(state, action) {
+  if (action.type === "PAUSE") {
+    return set(lensProp("pausing"), true, state);
+  }
+
   const move = action.payload;
 
   // Account for initial action, which is not a move
@@ -31,7 +35,8 @@ const reducer = function(state, action) {
       set(lensProp("token"), {player: nextPlayer, row: move.row, col: move.col}),
       set(lensProp("status"), status),
       set(lensProp("points"), [state.points[0] + addedPoints[0], state.points[1] + addedPoints[1]]),
-      set(lensProp("rows"), rows)
+      set(lensProp("rows"), rows),
+      set(lensProp("pausing"), false)
     )(state);
   }
   else {

@@ -32,7 +32,8 @@ const initialState = {
   rows: rows,
   token: {player: 1, row: 7, col: 7},
   points: [0, 0],
-  status: "Player 1's turn."
+  status: "Player 1's turn.",
+  pausing: false
 };
 
 export default initialState;

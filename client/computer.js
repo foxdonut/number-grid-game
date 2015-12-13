@@ -9,6 +9,10 @@ var computer = function(store) {
       // not computer's turn
       return;
     }
+    if (!state.pausing) {
+      setTimeout(() => store.dispatch({type: "PAUSE"}), 2000);
+      return;
+    }
 
     const rows = state.rows;
 
