@@ -8,6 +8,15 @@ const reducer = function(state, action) {
   else if (action.type === "NEW_GAME") {
     return initialState();
   }
+  else if (action.type === "GAME_OVER") {
+    let status = "Game over. " + (
+      (state.points[0] === state.points[1]) ?
+        "It's a tie!" :
+        "Player " + (state.points[0] > state.points[1] ? 1 : 2) + " wins!"
+    );
+
+    return set(lensProp("status"), status, set(lensProp("gameOver"), true, state));
+  }
 
   const move = action.payload;
 

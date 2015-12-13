@@ -9,7 +9,15 @@ const View = function(props) {
 
   const move = function(col) {
     return function(evt) {
-      props.dispatch({type: "MOVE", payload: col});
+      if (props.gameOver) {
+        alert("The game is over! Start a new game.");
+      }
+      else if (player === 1) {
+        props.dispatch({type: "MOVE", payload: col});
+      }
+      else {
+        alert("It's not your turn!");
+      }
     };
   };
 

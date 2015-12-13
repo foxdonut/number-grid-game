@@ -38,7 +38,8 @@ const initialState = function() {
     token: {player: 1, row: 7, col: 7},
     points: [0, 0],
     status: "Player 1's turn.",
-    pausing: false
+    pausing: false,
+    gameOver: false
   };
 };
 
