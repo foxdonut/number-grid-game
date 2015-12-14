@@ -1,6 +1,28 @@
 import {compose, lensIndex, lensProp, set} from "ramda";
 import initialState from "./initialState";
 
+/*
+var Maybe = require("data.maybe");
+
+var f1 = function(input) {
+  console.log("f1");
+  return null;
+};
+var f2 = function(input) {
+  console.log("f2");
+  return 42;
+};
+var f3 = function(input) {
+  console.log("f3");
+  return null;
+};
+var input = "input";
+
+var toMaybe = function(f) { return function() { return Maybe.fromNullable(f()); } };
+
+var result = Maybe.fromNullable(f1(input)).orElse(toMaybe(function() { return f2(input); })).orElse(toMaybe(function() { return f3(input); })).get();
+*/
+
 const reducer = function(state, action) {
   if (action.type === "PAUSE") {
     return set(lensProp("pausing"), true, state);
