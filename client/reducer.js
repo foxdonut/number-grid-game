@@ -2,6 +2,24 @@ import {compose, lensIndex, lensProp, set} from "ramda";
 import initialState from "./initialState";
 import ShortCircuit from "./short-circuit";
 
+const actions = {
+  "PAUSE": function(state) {
+    return set(lensProp("pausing"), true, state);
+  },
+  "NEW_GAME": function(state) {
+    return initialState();
+  },
+  "GAME_OVER": function(state) {
+    let status = "Game over. " + (
+      (state.points[0] === state.points[1]) ?
+        "It's a tie!" :
+        "Player " + (state.points[0] > state.points[1] ? 1 : 2) + " wins!"
+    );
+
+    return set(lensProp("status"), status, set(lensProp("gameOver"), true, state));
+  }
+};
+
 const reducer = function(state, action) {
   if (action.type === "PAUSE") {
     return set(lensProp("pausing"), true, state);

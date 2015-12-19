@@ -23,7 +23,7 @@ const View = function(props) {
 
   const newGame = function(evt) {
     evt.preventDefault();
-    if (confirm("Abandon this game and start a new one?")) {
+    if (confirm("Start new game?")) {
       props.dispatch({type: "NEW_GAME"});
     }
   };
